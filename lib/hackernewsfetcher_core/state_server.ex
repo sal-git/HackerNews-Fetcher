@@ -38,6 +38,7 @@ defmodule HackernewsfetcherCore.StateServer do
 
     def handle_cast({:update, data}, _state) do
         Logger.info("DATA CHANGE")
+        HackernewsfetcherWeb.RoomChannel.update_posts(data)
         {:noreply, data}
     end
 

@@ -2,7 +2,7 @@ defmodule HackernewsfetcherCore.DataFetcher do
     use GenServer
     require Logger
     import HackernewsfetcherCore.APIHelper
-    @timeout 300_000
+    @timeout 3_000
 
     def start_link(_) do
         GenServer.start_link(__MODULE__, [], name: __MODULE__)

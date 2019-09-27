@@ -9,9 +9,11 @@ defmodule Hackernewsfetcher.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      HackernewsfetcherWeb.Endpoint
+      HackernewsfetcherWeb.Endpoint,
       # Starts a worker by calling: Hackernewsfetcher.Worker.start_link(arg)
       # {Hackernewsfetcher.Worker, arg},
+      {HackernewsfetcherCore.StateServerSupervisor, []},
+      {HackernewsfetcherCore.DataFetcherSupervisor, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

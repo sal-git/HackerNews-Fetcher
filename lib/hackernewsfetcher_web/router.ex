@@ -20,7 +20,9 @@ defmodule HackernewsfetcherWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", HackernewsfetcherWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", HackernewsfetcherWeb do
+    pipe_through :api
+    get("/get_top_posts", ApiController, :get_top_posts)
+    get("/get_single_post", ApiController, :get_single_post)
+  end
 end

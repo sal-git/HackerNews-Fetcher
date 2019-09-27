@@ -56,10 +56,18 @@ socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
 let channel = socket.channel("room:lobby", {})
-
+let listcontainer = document.querySelector("#posts")
 
 channel.on("post_refresh", payload => {
   console.log(payload)
+  listcontainer.innerHTML = ""
+  for (var key in payload.data) {
+    if (payload.data.hasOwnProperty(key)) {
+      let messageItem = document.createElement("li")
+      messageItem.innerText = `${payload.data[key]['title']}`
+      listcontainer.appendChild(messageItem)
+    }
+  }
 })
 
 
